@@ -1,0 +1,79 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.pizza-container {
+  position: relative;
+  top: 10;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
+  min-height: 90vh;
+}
+.item-container {
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.pizza-sidenav {
+  padding-top: 30px !important;
+  padding-left: 20px;
+  margin-top: 5px;
+  width: 250px;
+}
+
+.pizza-list {
+  display: inline-block;
+  position: relative;
+  top: -65px;
+  left: 0px;
+  padding-left: 20px;
+}
+
+img {
+  height: 100px;
+}
+.pizza-card {
+  width: 100%;
+  height: inherit;
+  margin: 10px;
+  border-bottom: 1px solid #c4c4d2;
+}
+
+.pizza-card-bottom {
+  box-sizing: border-box;
+  width: 35%;
+  display: inline-block;
+  text-align: right;
+}
+
+.mat-button-toggle-checked {
+  background-color: #a0c2e4 !important;
+}
+
+.pizza-card-header {
+  justify-content: center !important;
+}
+
+:host ::ng-deep .mat-grid-tile .mat-figure {
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+.added-item {
+  padding: 5px;
+  margin-top: 5px;
+}
+
+mat-card-header {
+  justify-content: space-between;
+}
+
+:host ::ng-deep .mat-card-header-text {
+  margin: 0px;
+}
+
+:host ::ng-deep .mat-card-footer {
+  margin-left: 0px;
+}
+
+

@@ -1,0 +1,72 @@
+<h1 mat-dialog-title>Customize pizza</h1>
+<div mat-dialog-content>
+  <mat-card *ngIf="pizza" class="pizza-card">
+    <mat-card-header>
+      <mat-card-title>{{ pizza?.name }} Details </mat-card-title>
+    </mat-card-header>
+    <mat-card-content >
+      <div style="margin-top: 10px; margin-bottom:10px">
+          <span>
+            <img mat-card-image class="pizza-img" src="{{pizza?.image}}" alt="Photo of pizza">
+          </span>
+          <span>
+            <mat-select style="width: 160px; margin-right: 10px;" [(ngModel)]="pizza.pizzaBase" placeholder="Favorite base" name="base">
+              <mat-option *ngFor="let base of bases" [value]="base.value">
+                {{base.viewValue}}
+              </mat-option>
+            </mat-select>
+          </span>
+          <span>
+            <mat-select style="width: 160px;" placeholder="Favorite type" [(ngModel)]="pizza.pizzaType" name="type">
+              <mat-option *ngFor="let type of types" [value]="type.value">
+                {{type.viewValue}}
+              </mat-option>
+            </mat-select>
+          </span>
+        </div>
+          <div style="margin-bottom: 5px;"> <strong>Toppins</strong> </div>
+          <div>
+            {{ getCommaSeparatedToppins() }}
+          </div>
+          <div style="margin-top: 10px;margin-bottom: 5px;"> <strong>Added Extra toppins</strong> </div>
+          <ng-container *ngFor="let extraToppin of pizza?.extraToppins" >
+            <div >
+              <span>
+                <img width="20" height="20" src="{{extraToppin?.image}}" alt="{{extraToppin?.name}}">
+              </span>
+              <span>
+                {{ extraToppin.name | uppercase }}
+              </span>
+              <span>
+                <button (click)="removeToppin(extraToppin)"> x </button>
+              </span>
+            </div>
+          </ng-container>
+            <div style="margin-top: 10px;margin-bottom: 15px;"><strong > Extra toppins  </strong></div>
+          <ng-container *ngFor="let toppin of pizzaService.toppins$ | async">
+            <div>
+              <div>
+                <span>
+                  <img width="20" height="20" src="{{toppin.image}}" alt="{{toppin.name}}">
+                </span>
+                <span>
+                  {{ toppin.name | uppercase }}
+                </span>
+                <span>
+                  Rs. {{toppin.price}} /-
+                </span>
+                <span>
+                  <button (click)="addToppin(toppin)"> + </button>
+                </span>
+              </div>
+            </div>
+          </ng-container>
+    </mat-card-content>
+    <!-- <mat-card-actions class="pizza-back-btn">
+      <button (click)="goBack()" mat-raised-button>Back</button>
+    </mat-card-actions> -->
+  </mat-card>
+</div>
+<div mat-dialog-actions>
+  <button [mat-dialog-close] cdkFocusInitial>Add to cart {{ cartService.cartValue }}</button>
+</div>

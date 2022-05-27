@@ -1,0 +1,15 @@
+<h2> Cart </h2>
+<form class="cart-content">
+    <mat-card class="added-item" *ngFor="let pizza of pizzas | async; index as i" >
+        <mat-card-header id="{{ 'pizzaItem' + i}}" (click)="customizePizza(pizza)">
+            <mat-card-title> </mat-card-title>
+            <mat-card-subtitle> {{ pizza.name | uppercase }} </mat-card-subtitle>
+            <button id="{{ 'removePizza' + i}}" (click)="removePizza(pizza)"> x </button>
+        </mat-card-header>
+        <mat-card-content>
+            Rs. {{pizza.price}} /-
+        </mat-card-content>
+    </mat-card>
+</form>
+<h2>Total: {{cartService.cartValue$ | async}}</h2>
+<button (click)="orderNow()"> Order now </button>

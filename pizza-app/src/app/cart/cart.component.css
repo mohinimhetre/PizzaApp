@@ -1,0 +1,16 @@
+.cart {
+    padding: 5px;
+    margin-top: 5px;
+    height: 90vh;
+  }
+  
+  .cart-content {
+    height: 70%;
+    max-height: 70vh;
+    overflow: auto;
+  }
+
+  .added-item {
+    padding: 5px;
+    margin-top: 5px;
+  }
